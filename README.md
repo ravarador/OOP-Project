@@ -1,3 +1,5 @@
+# Notice:
+### [Crash Lecture on week 7 to 12 material](https://github.com/Seneca-244200/OOP-Workshops#crash-lecture-on-tuesday-of-study-break-jun-29th)
 # Project: General Hospital Pre-Triage Application
 - [MS1 V1.0](#milestone-1)
 - [MS2 V1.0](#milestone-2)
