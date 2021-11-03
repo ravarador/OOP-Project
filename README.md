@@ -470,6 +470,8 @@ Create a method to display the content of the MenuItem on ostream. *(No newline 
 ### The Menu Class
 Create the Menu class as follows:
 
+#### Rule of Three
+
 A Menu Object can not be copied or assigned to another Menu Object. *(Copy constructor and Copy assignment are deleted)*
 
 #### Attributes
