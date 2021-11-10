@@ -1,12 +1,13 @@
 # Project: Seneca Library Application
 MS1: Version 1.1 (Overview session video posted)
+MS2: Version 1.0
 
 ### Milestones
 
 |Milestone| Revision |  Overview<br />session |Comments |
 |------|:---:|:---:|:----|
-| [MS1](#milestone-1) | V1.0 | [Watch](https://www.youtube.com/watch?v=3-79kO4dSj0) |intitial post | 
-| MS2 |  |  |  |
+| [MS1](#milestone-1) | V1.1 | [Watch](https://www.youtube.com/watch?v=3-79kO4dSj0) |Overview session video posted |
+| [MS2](#milestone-2) | V1.0 |  | Initial post |
 | MS3 |  |  | |
 | MS4 |  |  | |
 | MS5<br />(Final Milestone) | | ||
@@ -24,7 +25,7 @@ This project will be done in 5 milestones and each milestone will have its due d
 |Milestone| Mark | Due date | Submission Policy|
 |:------:|:---:|:---:|-------|
 | MS1 | 10% | Nov 9th | gets full mark even if 1 week late. gets 0% afterwards|
-| MS2 | 10% | TBA | gets full mark even if 1 week late. gets 0% afterwards|
+| MS2 | 10% | Nov 14th | gets full mark even if 1 week late. gets 0% afterwards|
 | MS3 | 10% | TBA | gets full mark even if 1 week late. gets 0% afterwards|
 | MS4 | 10% | TBA  | gets full mark even if 1 week late. gets 0% afterwards|
 | MS5 (Final Milestone) | 60% | Dec 5th| 10% penalty for each day being late up to 5 days|
@@ -751,6 +752,278 @@ and follow the instructions.
 
 ## [Back to milestones](#milestones)
 
+# Milestone 2
+## The Seneca Library Application Module
+Your task for milestone 2 is to build a mockup application for the Seneca Library Application in a module called LibApp. 
+
+The **LibApp** class demos the execution of the Seneca Library Application with printing messages instead of actually doing the tasks.
+
+Later these messages are replaced with actual working modules to make the application functional. 
+
+Creating a mockup application before developing the main program helps to understand the entire system and also demonstrates the execution of the program to the client before the application is fully developed.
+
+You are going to use the Menu Module in this milestone. 
+### Modules (files) included in this milestone:
+```Text
+Utils.cpp
+Utils.h
+Menu.cpp
+Menu.h
+LibApp.cpp
+LibApp.h
+ms2_tester.cpp
+```
+Before starting the milestone you have to make a minor modification to the title of the Menu class: 
+
+> *Remove the colon **(":")** character after displaying the title of the Menu*
+#### MS1 MENU:
+```Text
+Lunch Menu:
+ 1- Omelet
+ 2- Tuna Sandwich
+ 3- California Rolls
+ 0- Exit
+ > 
+```
+#### MS2 Menu:
+```Text
+Lunch Menu
+ 1- Omelet
+ 2- Tuna Sandwich
+ 3- California Rolls
+ 0- Exit
+ > 
+```
+
+> Note: these types of modifications to previously written code are very common to accommodate newly developed logic.
+
+## The LibApp Module
+
+create a class call **LibApp" with following attributes:
+
+### LibApp Attributes
+```C++
+      bool m_changed;
+      Menu m_mainMenu;
+      Menu m_exitMenu;
+```
+
+#### `m_changed`
+A flag to keep track of changes made to the application data. This flag is initially set to false. If any change is made to the data of the application, this flag is set to true. 
+
+Doing so, when exiting the program, we can warn the user and ask if they like the changes to be saved or discarded.
+
+#### `m_mainMenu`
+This menu will be used as the main menu of the application and should be initialized with the following title:
+```text
+"Seneca Libray Application"
+```
+and then populated with the following menu items:
+```text
+"Add New Publication"
+"Remove Publication"
+"Checkout publication from library"
+"Return publication to library"
+```
+
+#### `m_exitMenu`
+This menu will be used when exiting the program if any changes are made to the data. This menu should be initialized with the following title:
+```text
+"Changes have been made to the data, what would you like to do?"
+```
+and then populated with the following menu items:
+```text
+"Save changes and exit"
+"Cancel and go back to the main menu"
+```
+
+### Private Methods
+```C++
+bool confirm(const char* message);
+```
+Instantiate a **Menu** in this function and initialize it with the **message** argument.
+
+Then add only a `"yes"` as a single menu item to the Menu.  
+
+Finally, run the menu and return true if the run method of Menu returns 1 and otherwise this function returns false.
+#### Simple private fuctions:
+```C++
+      void load();  // prints: "Loading Data"<NEWLINE>
+      void save();  // prints: "Saving Data"<NEWLINE>
+      void search();  // prints: "Searching for publication"<NEWLINE>
+      
+      void returnPub();  /*  Calls the search() method.
+                             prints "Returning publication"<NEWLINE>
+                             prints "Publication returned"<NEWLINE>
+                             sets m_changed to true;
+                         */
+```
+#### Methods with confirmation
+```C++
+void newPublication();
+```
+prints `"Adding new publication to library"`+newline<br />
+calls the search method<br />
+calls the confirm method with `"Add this publication to library?"`<br />
+if confrim returns true, it will set `m_changed` to true and prints `"Publication added"` + newline<br />
+```C++
+void removePublication();
+```
+prints `"Removing publication from library"`+newline<br />
+calls the search method<br />
+calls the confirm method with `"Remove this publication from the library?"`<br />
+if confrim returns true, it will set `m_changed` to true and prints `"Publication removed"` + newline<br />
+```C++
+void checkOutPub();
+```
+calls the search method<br />
+calls the confirm method with `Check out publication?"`<br />
+if confrim returns true, it will set `m_changed` to true and prints `"Publication checked out"` + newline<br />
+
+## Constructor
+Constructor should initialize and set the attributes and load the publication records from database
+- Initializes the attributes (see the attribute section)
+- populates the Menu attributes
+- calls the `load()`` method
+## MS2 Submission and the due date
+
+## The run method
+
+The run method is the main application driver.
+
+It displays the main menu and based on the user's selection calls the corresponding private method and repeats the above until the user chooses to exit.
+
+When the user selects exit, the value of `m_changed` is examined. 
+If the value is false, then since the data of the application is not modified, the program terminates.
+
+If the value is true, the `m_exitMenu` is used by calling its run method. Doing so the user has the selection of saving and exiting, cancelling and going back to the main menu or exiting without saving. 
+
+If the first one is selected, the `save()` method is called and the program terminates.
+
+If the second one is selected the program goes back to the main menu and execution continues.
+
+If the exit is selected, then the confirm menu will be called using the message: `"This will discard all the changes are you sure?"`.  If the user selects **Yes**, the program terminates. Otherwise, the program goes back to the main menu and execution resumes.
+
+
+When the program is terminated, the following message is printed:
+```Text
+-------------------------------------------
+Thanks for using Seneca Library Application
+```
+
+### suggested pseudo code:
+```text
+loop until done
+    display menu
+    if first option  new publication otherwise
+    if second option remove publication otherwise
+    if third option checkout otherwise
+    if fourth option return publication otherwise 
+        if changed
+           Warning menu and choices
+           if save selected save and its done otherwise
+           if discard selected 
+              final confirmation for exit 
+              if exit selected 
+                 its done (no saving)   
+              end if
+           end if
+        otherwise (no change)
+           it is done          
+        end if
+    end if
+end loop        
+goodbye message
+```
+
+## Tester program
+```C++
+// Final Project Milestone 2
+// LibApp Mockup Module
+// File	ms2_tester.cpp
+// Version 1.0
+// Author	Fardad Soleimanloo
+// Revision History
+// -----------------------------------------------------------
+// Name               Date                 Reason
+// Fardad             2021/11/09		       Preliminary release
+/////////////////////////////////////////////////////////////////
+#include <iostream>
+#include "LibApp.h"
+using namespace std;
+int main() {
+   sdds::LibApp theApp;
+   cout << endl << "Testing exiting with no change:" << endl;
+   theApp.run();
+   cout << endl << "Testing exiting with change and discarding data:" << endl;
+   theApp.run();
+   cout << endl << "Testing exiting with change and saving data:" << endl;
+   theApp.run();
+   cout << endl << "Testing all actions:" << endl;
+   theApp.run();
+   return 0;
+}
+/* data to be entered for testing:
+ 1- 1
+ 2- 0
+ 3- 0
+ 4- 2
+ 5- 1
+ 6- 0
+ 7- 0
+ 8- 1
+ 9- 3
+10- 1
+11- 0
+12- 1
+13- 4
+14- 0
+15- 2
+16- 0
+17- 1
+*/
+```
+## output
+
+[MS2 Output](ms2_output.md)
+
+
+## MS2 Submission and the due date
+
+Milestone 1 optimal due date is Nov 14th, 23:59 .
+
+> If you would like to successfully complete the project and be on time, **start early** and try to meet all the due dates of the milestones.
+
+
+Upload your source code and the tester program (**Utils.cpp, Utils.h, Menu.cpp, Menu.h, LibApp.cpp, LibApp.h and ms2_tester.cpp**) to your `matrix` account. Compile and run your code using the `g++` compiler [as shown in the introduction](#compiling-and-testing-your-program) and make sure that everything works properly.
+
+Then, run the following command from your account (replace `profname.proflastname` with your professor’s Seneca userid):
+```
+~profname.proflastname/submit 2??/prj/m2
+```
+and follow the instructions.
+
+- *2??* is replaced with your subject code
+
+
+### The submit program's options:
+```bash
+~prof_name.prof_lastname/submit DeliverableName [-submission options]<ENTER>
+[-submission option] acceptable values:
+  "-due":
+       Shows due dates only
+       This option cannot be used in combination with any other option.
+  "-skip_spaces":
+       Do the submission regardless of incorrect horizontal spacing.
+       This option may attract penalty.
+  "-skip_blank_lines":
+       Do the submission regardless of incorrect vertical spacing.
+       This option may attract penalty.
+  "-feedback":
+       Check the program execution without submission.
+```
+
+## [Back to milestones](#milestones)
 
 
 
