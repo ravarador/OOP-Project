@@ -1,6 +1,6 @@
 # Project: Seneca Library Application
-MS1: Version 1.1 (Overview session video posted)
-MS2: Version 1.0
+- MS1: Version 1.1 (Overview session video posted)
+- MS2: Version 1.0
 
 ### Milestones
 
