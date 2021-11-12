@@ -6,7 +6,7 @@
 |------|:---:|:---:|:----|
 | [MS1](#milestone-1) | V1.1 | [Watch](https://www.youtube.com/watch?v=3-79kO4dSj0) |Overview session video posted |
 | [MS2](#milestone-2) | [V1.1](#ms2-v11) |  | Removed call to search method for **newPublictation()** |
-|     |[V1.2](#citation-sources) |  |Revision History Explanation |
+| --- |[V1.2](#citation-sources) |  |Revision History Explanation |
 | MS3 |  |  | |
 | MS4 |  |  | |
 | MS5<br />(Final Milestone) | | ||
