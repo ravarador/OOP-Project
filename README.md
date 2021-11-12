@@ -7,7 +7,7 @@ MS2: Version 1.0
 |Milestone| Revision |  Overview<br />session |Comments |
 |------|:---:|:---:|:----|
 | [MS1](#milestone-1) | V1.1 | [Watch](https://www.youtube.com/watch?v=3-79kO4dSj0) |Overview session video posted |
-| [MS2](#milestone-2) | V1.0 |  | Initial post |
+| [MS2](#milestone-2) | V1.1 |  | Removed call to search method for **newPublictation()** |
 | MS3 |  |  | |
 | MS4 |  |  | |
 | MS5<br />(Final Milestone) | | ||
@@ -862,8 +862,9 @@ Finally, run the menu and return true if the run method of Menu returns 1 and ot
 ```C++
 void newPublication();
 ```
+#### MS2 V1.1
 prints `"Adding new publication to library"`+newline<br />
-calls the search method<br />
+~~calls the search method~~ MS2-1.1  <br />
 calls the confirm method with `"Add this publication to library?"`<br />
 if confrim returns true, it will set `m_changed` to true and prints `"Publication added"` + newline<br />
 ```C++
