@@ -1,13 +1,13 @@
 # Project: Seneca Library Application
 - MS1: Version 1.1 (Overview session video posted)
-- MS2: Version 1.0
+- MS2: [Version 1.1](#ms2-v11) (Removed call to search method for **newPublictation()**)
 
 ### Milestones
 
 |Milestone| Revision |  Overview<br />session |Comments |
 |------|:---:|:---:|:----|
 | [MS1](#milestone-1) | V1.1 | [Watch](https://www.youtube.com/watch?v=3-79kO4dSj0) |Overview session video posted |
-| [MS2](#milestone-2) | V1.1 |  | Removed call to search method for **newPublictation()** |
+| [MS2](#milestone-2) | [V1.1](#ms2-v11) |  | Removed call to search method for **newPublictation()** |
 | MS3 |  |  | |
 | MS4 |  |  | |
 | MS5<br />(Final Milestone) | | ||
