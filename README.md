@@ -1,6 +1,4 @@
 # Project: Seneca Library Application
-- MS1: Version 1.1 (Overview session video posted)
-- MS2: [Version 1.1](#ms2-v11) (Removed call to search method for **newPublictation()**)
 
 ### Milestones
 
