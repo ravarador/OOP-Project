@@ -8,6 +8,7 @@
 |------|:---:|:---:|:----|
 | [MS1](#milestone-1) | V1.1 | [Watch](https://www.youtube.com/watch?v=3-79kO4dSj0) |Overview session video posted |
 | [MS2](#milestone-2) | [V1.1](#ms2-v11) |  | Removed call to search method for **newPublictation()** |
+|     |[V1.2](#citation-sources) |  |Revision History Explanation |
 | MS3 |  |  | |
 | MS4 |  |  | |
 | MS5<br />(Final Milestone) | | ||
@@ -45,6 +46,8 @@ You can check the due date of each milestone using the ```-due``` flag in the su
 ## Citation, Sources
 
 When submitting your work, all the files submitted should carry full student information along with the "citation and sources" information. See the following example:
+
+If you have multiple submissions of the same milestone, please update the Revision History in each submission so your professor knows what changes to look for.
 
 ```C++
 /* Citation and Sources...
