@@ -64,8 +64,8 @@ void menuTester();
 void hr();
 
 int main() {
-   cout << col_red << "Testing Date module:" << col_end << endl;
-   dateTester();
+   /*cout << col_red << "Testing Date module:" << col_end << endl;
+   dateTester();*/
    cout << col_red << "testing Menu Module:" << col_end << endl;
    menuTester();
    return 0;

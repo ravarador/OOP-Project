@@ -12,8 +12,12 @@
 #include <iomanip>
 #include <iostream>
 #include <ctime>
+#include <cstring>
+
 using namespace std;
+
 #include "Date.h"
+
 namespace sdds {
    bool Date::validate() {
       errCode(NO_ERROR);
@@ -88,5 +92,118 @@ namespace sdds {
       return RO.read(is);
    }
 
+   // functions i need to do:
+   std::istream& Date::read(std::istream& is) {
+       errCode(NO_ERROR);
+       is >> m_year;
+       is.ignore();
+       is >> m_mon;
+       is.ignore();
+       is >> m_day;
+       if (is.fail()) {
+           errCode(CIN_FAILED);
+           is.clear();
+       }
+       else {
+           if (m_year >= MIN_YEAR && m_year <= currentYear()) {
+               if (m_mon >= 1 && m_mon <= 12) {
+                   if (m_day <= mdays() && m_day >= 1)
+                       errCode(NO_ERROR);
+                   else
+                       errCode(DAY_ERROR);
+               }
+               else
+                   errCode(MON_ERROR);
+           }
+           else
+               errCode(YEAR_ERROR);
+       }
+       is.ignore(1000, '\n');
 
+       return is;
+   }
+
+   std::ostream& Date::write(std::ostream& os)const {
+       // If the Date object is in a “bad” state (it is invalid) print the “dateStatus()”. 
+       if (this->bad()) {
+           os << dateStatus();
+       }
+       else {
+           // Otherwise, the function should write the date in the following format using the ostream object:
+           // Prints the year
+           os << m_year;
+           // Prints a Slash “ / ”
+           os << "/";
+           // Prints the month in two spaces, padding the left digit with zero if the month is a single - digit number
+           os << left << setw(2) << setfill('0') << m_mon;
+           // Prints a Slash “ / ”
+           os << "/";
+           // Prints the day in two spaces, padding the left digit with zero if the day is a single - digit number
+           os << left << setw(2) << setfill('0') << m_day;
+           // Makes sure the padding is set back to spaces from zero
+           os << setfill(' ');
+           // Returns the ostream object.
+       }
+
+       
+       return os;
+   }
+
+   // Comparison operator overload methods
+   bool Date::operator==(const Date& right) const {
+       if (this->m_day == right.m_day)
+           if (this->m_mon == right.m_mon)
+               if (this->m_year == right.m_year)
+                   return true;
+
+       return false;
+   }
+
+   bool Date::operator!=(const Date& right) const {
+       return (this->m_year != right.m_year ||
+           this->m_mon != right.m_mon ||
+           this->m_day != right.m_day);
+   }
+
+   bool Date::operator>=(const Date& right) const {
+       if (this->m_day >= right.m_day)
+           if (this->m_mon >= right.m_mon)
+               if (this->m_year >= right.m_year)
+                   return true;
+
+       return false;
+   }
+
+   bool Date::operator<=(const Date& right) const {
+       if (this->m_day <= right.m_day)
+           if (this->m_mon <= right.m_mon)
+               if (this->m_year <= right.m_year)
+                   return true;
+
+       return false;
+   }
+
+   bool Date::operator<(const Date& right) const {
+       return (this->m_year < right.m_year ||
+           this->m_mon < right.m_mon ||
+           this->m_day < right.m_day);
+   }
+
+   bool Date::operator>(const Date& right) const {
+       return (this->m_year > right.m_year ||
+           this->m_mon > right.m_mon ||
+           this->m_day > right.m_day);
+   }
+
+   // Operator- method
+   int Date::operator-(const Date& right)const {
+       return (daysSince0001_1_1() - right.daysSince0001_1_1());
+   }
+
+   // bool type conversion operator
+   Date::operator bool() const {
+       return (m_year >= 1500 && m_year <= m_CUR_YEAR &&
+           m_mon >= 1 && m_mon <= 12 &&
+           m_day >= 1 && m_day <= mdays());
+   }
 }

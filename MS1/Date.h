@@ -49,8 +49,25 @@ namespace sdds {
       const char* dateStatus()const;  // returns a string corresponding the current status of the date
       int currentYear()const;         // returns the m_CUR_YEAR value;
 
-      
+      // functions i need to do:
+      std::istream& read(std::istream& is = std::cin);
+      std::ostream& write(std::ostream& os = std::cout)const;
+
+      // Comparison operator overload methods
+      bool operator==(const Date& right) const;
+      bool operator!=(const Date& right) const;
+      bool operator>=(const Date& right) const;
+      bool operator<=(const Date& right) const;
+      bool operator<(const Date& right) const;
+      bool operator>(const Date& right) const;
+
+      // Operator- method
+      int operator-(const Date& right)const;
+
+      // bool type conversion operator
+      operator bool() const;
    };
+
    std::ostream& operator<<(std::ostream& os, const Date& RO);
    std::istream& operator>>(std::istream& is, Date& RO);
 }

@@ -15,7 +15,10 @@
 #ifndef SDDS_UTILS_H__
 #define SDDS_UTILS_H__
 
-namespace sdds {
 
+namespace sdds {
+	// getInt()
+	bool isInt(const char s[]);
 }
+
 #endif // SDDS_UTILS_H__
