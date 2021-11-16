@@ -9,7 +9,7 @@
 | --- |[V1.2](#citation-sources) |  |Revision History Explanation |
 | --- | V1.3 |  |Fixed output typo: "Libray -> Library" |
 | --- | V1.4 |  |Due date extended by one day to Nov 15 |
-| [MS3](#milestone-3) | V1.0  |  | Initial Post |
+| [MS3](#milestone-3) | V1.0  | [Watch[(https://www.youtube.com/watch?v=kNpuE3wMETQ) | Initial Post |
 | --- | [V1.1](#ms3-v11) | | corrected zero to empty string |
 | --- | [V1.1.1](#ms3-v111) | | Added output sample for membership being 0  |
 | MS4 |  |  | |
