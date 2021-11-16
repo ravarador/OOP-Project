@@ -10,6 +10,8 @@
 | --- | V1.3 |  |Fixed output typo: "Libray -> Library" |
 | --- | V1.4 |  |Due date extended by one day to Nov 15 |
 | [MS3](#milestone-3) | V1.0  |  | Initial Post |
+| --- | [V1.1](#ms3-v11) | | corrected zero to empty string |
+| --- | [V1.1.1](#ms3-v111) | | Added output sample for membership being 0  |
 | MS4 |  |  | |
 | MS5<br />(Final Milestone) | | ||
 
@@ -1164,7 +1166,7 @@ This attribute is **null** by default.
 Hold the location of the publication in the library. 
 **m_shelfId** is a c-string that is exactly 4 characters long. 
 
-##### V1.1
+##### MS3 V1.1
 This attribute is an empty string by default.
 
 #### m_membership
@@ -1231,7 +1233,7 @@ Returns true if the address of the **io** object is the same as the address of e
 #### `ostream& write(ostream& os) const`
 If the **os** argument is a console IO object (use **conIO()**), print **shelfId**, **title**, **membership** and **date** attributes as the following format (title is left-justified padded with dots)
 
-##### V1.1.1
+##### MS3 V1.1.1
 ```text
          1         2         3         4         5         6         7 
 1234567890123456789012345678901234567890123456789012345678901234567890
