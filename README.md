@@ -1230,10 +1230,13 @@ Returns true if the address of the **io** object is the same as the address of e
 
 #### `ostream& write(ostream& os) const`
 If the **os** argument is a console IO object (use **conIO()**), print **shelfId**, **title**, **membership** and **date** attributes as the following format (title is left-justified padded with dots)
+
+##### V1.1.1
 ```text
          1         2         3         4         5         6         7 
 1234567890123456789012345678901234567890123456789012345678901234567890
 | P001 | The Toronto Star.............. | 34037 | 2021/11/17 |
+| P007 | Macleans Magazine............. |  N/A  | 2021/11/11 |
 ```
 Otherwise:
 
