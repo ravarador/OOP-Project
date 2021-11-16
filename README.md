@@ -1164,7 +1164,8 @@ This attribute is **null** by default.
 Hold the location of the publication in the library. 
 **m_shelfId** is a c-string that is exactly 4 characters long. 
 
-This attribute is zero by default.
+##### V1.1
+This attribute is an empty string by default.
 
 #### m_membership
 This attribute is an integer to hold a 5 digit membership number of members of the library. 
