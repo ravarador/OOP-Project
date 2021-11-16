@@ -1414,7 +1414,7 @@ int main() {
 ```
  
 ## Tester Output
-[MS3 tester output](output.md)
+[MS3 tester output](MS3/output.md)
 
 
 
