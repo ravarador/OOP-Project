@@ -1,0 +1,5 @@
+namespace sdds {
+	class Publication {
+
+	};
+}
