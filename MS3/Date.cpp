@@ -1,4 +1,4 @@
-// Final Project Milestone 1 
+// Final Project Milestone 3
 // Date Module
 // File	Date.cpp
 // Version 1.0
@@ -18,16 +18,13 @@ using namespace std;
 
 #include "Date.h"
 
-bool sdds_test = false;
-int sdds_year = 2021;
-int sdds_mon = 12;
-int sdds_day = 25;
+
 
 namespace sdds {
-    extern bool sdds_test;
-    extern int sdds_year;
-    extern int sdds_mon;
-    extern int sdds_day;
+    bool sdds_test = false;
+    int sdds_year = 2021;
+    int sdds_mon = 12;
+    int sdds_day = 25;
 
     bool Date::validate() {
         errCode(NO_ERROR);

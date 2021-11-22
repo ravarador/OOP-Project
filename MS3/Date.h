@@ -1,4 +1,4 @@
-// Final Project Milestone 1 
+// Final Project Milestone 3
 // Date Module
 // File	Date.h
 // Version 1.0
@@ -12,6 +12,11 @@
 #define SDDS_DATE_H__
 #include <iostream>
 namespace sdds {
+    extern bool sdds_test;
+    extern int sdds_year;
+    extern int sdds_mon;
+    extern int sdds_day;
+
     const int NO_ERROR = 0;
     const int CIN_FAILED = 1;
     const int YEAR_ERROR = 2;
@@ -40,6 +45,8 @@ namespace sdds {
         bool bad()const;             // return true if
         int mdays()const;            // returns the number of days in current month
         void setToToday();           // sets the date to the current date (system date)
+
+        friend class Publication;
     public:
         Date();                      // creates a date with current date
         Date(int year, int mon, int day); /* create a date with assigned values

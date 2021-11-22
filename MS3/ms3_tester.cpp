@@ -98,7 +98,7 @@ int main() {
          filein.setstate(ios::failbit);
       }
       filein.ignore();
-      pd = getNextRec(filein);
+      pd = getNextRec(filein); 
       if (filein) {
          cout << (pd.onLoan() ? "|*" : "| ");
          cout.width(4);
