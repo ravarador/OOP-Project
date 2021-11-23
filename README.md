@@ -12,7 +12,7 @@
 | [MS3](#milestone-3) | V1.0  |  | Initial Post |
 | --- | [V1.1](#ms3-v11) | | corrected zero to empty string |
 | --- | [V1.1.1](#ms3-v111) | | Added output sample for membership being 0  |
-| MS4 |  |  | |
+| [MS4](#milestone-4) | V1.0  |  | Initial Post |
 | MS5<br />(Final Milestone) | | ||
 
 When Books and other publications arrive in the Seneca library, they should be tagged and put on shelves, so they are easily retrievable to be lent out to those who need them. 
@@ -30,7 +30,7 @@ This project will be done in 5 milestones and each milestone will have its due d
 | MS1 | 10% | Nov 9th | gets full mark even if 1 week late. gets 0% afterwards|
 | MS2 | 10% | Nov 15th | gets full mark even if 1 week late. gets 0% afterwards|
 | MS3 | 10% | Nov 22nd | gets full mark even if 1 week late. gets 0% afterwards|
-| MS4 | 10% | TBA  | gets full mark even if 1 week late. gets 0% afterwards|
+| MS4 | 10% | Nov 27th  | gets full mark even if 1 week late. gets 0% afterwards|
 | MS5 (Final Milestone) | 60% | Dec 5th| 10% penalty for each day being late up to 5 days|
 
 > The first 4 milestones will not be marked based on the code, but their success and their timely submissions. You may modify or debug your previous code as you are going through the milestones. The only milestone that is going to scrutinized based your code will be milestone 5. If you require any feedback on your first four milestones you need to ask your professor to do so.
@@ -1458,6 +1458,229 @@ and follow the instructions.
 ## [Back to milestones](#milestones)
 
 
+# Milestone 4
+## The **Book** class
+
+This milestone will require the following modules and header files:
+- Lib.h
+- Uitls
+- Date
+- Streamable
+- Publication
+
+### The Book class implementation
+The Book class is derived from the Publication class. A book is a publication with an "Author name". 
+ 
+The book class only has one attribute that is a pointer to a character to hold an author's name Dynamically. 
+
+#### Construction
+A book is created empty by default, in a safe empty state. 
+
+#### The rule of three
+Implement what is needed to comply with the rule of three so a book can safely be copied or assigned to another book.
+
+### Methods
+The book class overrides the following virtual methods and type conversion operator.
+- type
+- write
+- read
+- set
+- operator bool()
+
+### Method implementations:
+
+#### type method
+Returns the character "B".
+
+#### write method
+- First, it will invoke the write of its Base class.
+- If the incoming argument is a console IO object.
+   - writes a single space
+   - writes the author's name in SDDS_AUTHOR_WIDTH spaces. If the author's name is longer than the SDDS_AUTHOR_WIDTH value, it will cut it short and writes exactly  SDDS_AUTHOR_WIDTH characters. Note that this should not modify the author's name.
+   - writes `" |"`
+- If the incoming argument is not a console IO object
+   - writes a tab character `'\t'` 
+   - writes the author's name
+- returns the incoming ostream.
+
+#### Read
+Read the author name in local variables before setting the attribute to any value. (to make it easier lets assume the author's name can not be more than 256 characters)
+
+- First, invoke the read of the Base class.
+- Free the memory held for the author's name
+-  If the incoming argument is a console IO object
+   - ignore one character (skip the '\n')
+   - prompt  `"Author: "`
+   - read the author's name 
+- If the incoming argument is not a console IO object
+   - ignore the tab character
+   - read the author's name
+
+Then if the incoming istream object is not in a fail state, dynamically hold the author's name in the char pointer attribute of the book class.
+
+At the end return the incoming istream object.
+
+#### set
+- invoke the set of the base class to set the member id
+- reset the date to the current date.
+
+#### operator bool()
+return true if the author's name exists and is not empty and the base class's operator bool() has returned true.
+
+## the Tester program
+``` C++
+// Final Project Milestone 4
+// Book 
+// File	ms4_tester.cpp
+// Version 1.0
+// Author	Fardad Soleimanloo
+// Revision History
+// -----------------------------------------------------------
+// Name               Date                 Reason
+//                    This will not change the output
+/////////////////////////////////////////////////////////////////
+#include <iostream>
+#include <fstream>
+#include "Book.h"
+#include "Utils.h"
+#include "Date.h"
 
 
+using namespace std;
+using namespace sdds;
+Book readBook(istream& istr) {
+   Book P;
+   istr >> P;
+   return P;
+}
+Book getNextRec(ifstream& ifstr) {
+   Book P;
+   ifstr >> P;
+   ifstr.ignore(1000, '\n');
+   return P;
+}
 
+int main() {
+   sdds::sdds_test = true;
+   Book pd;
+   cout << "An Invalid Book printout:" << endl;
+   cout << ">" << pd << "<" << endl;
+   cout << endl << "Enter the following: " << endl
+      << "P1234" << endl
+      << "------------------------------" << endl;
+   pd = readBook(cin);
+   if (!cin) {
+      cin.clear();
+      cin.ignore(1000, '\n');
+   }
+   else {
+      cout << "This is not supposed to be printed!" << endl;
+   }
+   cout << "You entered:" << endl;
+   cout << ">" << pd << "<" << endl;
+   cout << endl << "Enter the following: " << endl
+      << "P123" << endl
+      << "Seneca Handbook" << endl
+      << "2021/13/17" << endl
+      << "------------------------------" << endl;
+   pd = readBook(cin);
+   if (!cin) {
+      cin.clear();
+      cin.ignore(1000, '\n');
+   }
+   else {
+      cout << "This is not supposed to be printed!" << endl;
+   }
+   cout << "You entered:" << endl;
+   cout << ">" << pd << "<" << endl;
+   cout << endl << "Enter the following: " << endl
+      << "P123" << endl
+      << "The Story of My Experiments with Truth" << endl
+      << "2021/11/17" << endl
+      << "Mohandas Karamchand Gandhi" << endl
+      << "------------------------------" << endl;
+   pd = readBook(cin);
+   cout << "You entered:" << endl;
+   cout << pd << endl;
+   cout << "And the title is agian: \"" << (const char*)pd << "\"" << endl;
+   pd.set(12345);
+   if (pd.onLoan()) {
+      cout << "Now this publication is on loan to a member with the id: 12345" << endl;
+      cout << "The checkout date is: " << pd.checkoutDate() << endl;
+      pd.setRef(9999);
+      cout << "The library unique reference id is: " << pd.getRef() << endl;
+      cout << pd << endl;
+      cout << "----------------------------------------------------------------" << endl;
+    }
+   cout << "Adding the Book to the end of the data file:" << endl;
+   ofstream fileout("Books.txt", ios::app);
+   if (pd) {
+      cout << "appeneded to the file" << endl;
+      fileout << pd << endl;
+   }
+   fileout.close();
+   cout << endl << "Contents of the file:" << endl;
+   ifstream filein("Books.txt");
+   char pType{};
+   for (int row = 1; filein; row++) {
+      filein >> pType;
+      if (pType != 'B') {
+         cout << "The Record type signature is supposed to be B, but it is: " << pType << endl;
+         filein.setstate(ios::failbit);
+      }
+      filein.ignore();
+      pd = getNextRec(filein);
+      if (filein) {
+         cout << (pd.onLoan() ? "|*" : "| ");
+         cout.width(4);
+         cout.fill(' ');
+         cout.setf(ios::right);
+         cout << row << (pd.onLoan()? "*": " ");
+         cout.unsetf(ios::right);
+         cout << pd << (pd == "Star" ? "<<<":"") << endl;
+      }
+   }
+   return 0;
+}
+```
+
+## MS4 tester program output
+[MS4 tester output](MS4/output.md)
+
+
+## MS4 Submission 
+
+
+> If you would like to successfully complete the project and be on time, **start early** and try to meet all the due dates of the milestones.
+
+
+Upload your source code and the tester program (**Utils.cpp, Utils.h, Date.cpp, Date.h, Streamable.cpp, Streamable.h, Publication.cpp, Publication.h,Book.cpp,Book.h,Books.txt, and ms4_tester.cpp**) to your `matrix` account. Compile and run your code using the `g++` compiler [as shown in the introduction](#compiling-and-testing-your-program) and make sure that everything works properly.
+
+Then, run the following command from your account (replace `profname.proflastname` with your professor’s Seneca userid):
+```
+~profname.proflastname/submit 2??/prj/m?
+```
+and follow the instructions.
+
+- *2??* is replaced with your subject code
+- *m?* is replaced with your milestone
+
+
+### The submit program's options:
+```bash
+~prof_name.prof_lastname/submit DeliverableName [-submission options]<ENTER>
+[-submission option] acceptable values:
+  "-due":
+       Shows due dates only
+       This option cannot be used in combination with any other option.
+  "-skip_spaces":
+       Do the submission regardless of incorrect horizontal spacing.
+       This option may attract penalty.
+  "-skip_blank_lines":
+       Do the submission regardless of incorrect vertical spacing.
+       This option may attract penalty.
+  "-feedback":
+       Check the program execution without submission.
+```
+
+## [Back to milestones](#milestones)
