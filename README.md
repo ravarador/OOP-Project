@@ -12,7 +12,7 @@
 | [MS3](#milestone-3) | V1.0  | [Watch](https://www.youtube.com/watch?v=kNpuE3wMETQ) | Initial Post |
 | --- | [V1.1](#ms3-v11) | | corrected zero to empty string |
 | --- | [V1.1.1](#ms3-v111) | | Added output sample for membership being 0  |
-| [MS4](#milestone-4) | V1.0  |  | Initial Post |
+| [MS4](#milestone-4) | V1.0  | [Watch](https://www.youtube.com/watch?v=0yiEqHOwhEA) | Initial Post |
 | MS5<br />(Final Milestone) | | ||
 
 When Books and other publications arrive in the Seneca library, they should be tagged and put on shelves, so they are easily retrievable to be lent out to those who need them. 
