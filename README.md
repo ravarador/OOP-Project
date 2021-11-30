@@ -13,7 +13,7 @@
 | --- | [V1.1](#ms3-v11) | | corrected zero to empty string |
 | --- | [V1.1.1](#ms3-v111) | | Added output sample for membership being 0  |
 | [MS4](#milestone-4) | V1.0  | [Watch](https://www.youtube.com/watch?v=0yiEqHOwhEA) | Initial Post |
-| [MS5](#milestone-5)<br />(Final Milestone) | V0.9 | |Initial post|
+| [MS5](#milestone-5)<br />(Final Milestone) | V0.9 | [Watch](https://www.youtube.com/watch?v=ezr4vS9BVT0) |Initial post|
 
 When Books and other publications arrive in the Seneca library, they should be tagged and put on shelves, so they are easily retrievable to be lent out to those who need them. 
 Your task is to design an application that receives the publications and stores them into the system with the information needed for their retrieval. 
