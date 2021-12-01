@@ -2142,7 +2142,7 @@ Daily one
 0
 1
 ```
-[Correct Output](MS5/m52_correct_output.md)
+[Correct Output](MS5/m51_correct_output.md)
 
 ### Milestone 5 Test Two  (m52)
 
