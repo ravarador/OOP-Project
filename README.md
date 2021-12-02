@@ -15,6 +15,7 @@
 | [MS4](#milestone-4) | V1.0  | [Watch](https://www.youtube.com/watch?v=0yiEqHOwhEA) | Initial Post |
 | [MS5](#milestone-5)<br />(Final Milestone) | V0.9 | [Watch](https://www.youtube.com/watch?v=A7WMEJWFYT4) |Initial post|
 | | V1.0 | |Submissions opened |
+| | [V1.1](#ms5-v11) | | Explained the return value of search function |
 
 When Books and other publications arrive in the Seneca library, they should be tagged and put on shelves, so they are easily retrievable to be lent out to those who need them. 
 Your task is to design an application that receives the publications and stores them into the system with the information needed for their retrieval. 
@@ -1856,8 +1857,8 @@ First, get the type of publication to search for from the user. (user the type s
 Then print `"Publication Title: "` and get the title to search the PPA for. (up to 256 characters)
 
 Go through all the publications in the PPA and base on the method of search (all the items, on loan items or available ones) check each element and if the publication (pointed by the PPA element) is not deleted and type matches the selection of the user and the title contains the title the user entered, insert it into the PublicationSelector object. 
-
-If matches are found, sort the result and get the user's selection. If not print "No matches found!"
+#### MS5 V1.1
+If matches are found, sort the result and get the user's selection ***and return the library reference number***. If not print "No matches found!"
 
 If the user aborts at any stage print "Aborted!"
 
